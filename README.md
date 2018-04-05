@@ -33,6 +33,30 @@ focusing on the following goals:
 * No external dependencies without very good reason
 * Focus on improving the existing experience rather than expanding it
 
+## Recommended Installation
+
+.zshrc
+
+```
+[[ ! -d "$HOME/.antigen" ]] && git clone https://github.com/zsh-users/antigen.git "$HOME/.antigen"
+source "$HOME/.antigen/antigen.zsh"
+
+# Set the default plugin repo to be zsh-utils
+antigen use belak/zsh-utils
+
+# Specify any plugins we want
+antigen bundle completion
+antigen bundle utility
+antigen bundle history
+antigen bundle prompt
+
+# Load everything
+antigen apply
+
+# Set any settings or overrides here
+prompt belak
+```
+
 ## Provided Plugins
 
 ### completion
