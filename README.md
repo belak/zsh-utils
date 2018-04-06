@@ -45,10 +45,11 @@ source "$HOME/.antigen/antigen.zsh"
 antigen use belak/zsh-utils
 
 # Specify any plugins we want
-antigen bundle completion
-antigen bundle utility
+antigen bundle editor
 antigen bundle history
 antigen bundle prompt
+antigen bundle utility
+antigen bundle completion
 
 # Load everything
 antigen apply
