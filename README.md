@@ -35,7 +35,14 @@ focusing on the following goals:
 
 ## Recommended Installation
 
-.zshrc
+Personally, I recommend [antigen](https://github.com/zsh-users/antigen.git), but
+it should be possible to load with other plugin managers like
+[zgen](https://github.com/tarjoilija/zgen) or
+[zplug](https://github.com/zplug/zplug) as well.
+
+The following example can be placed in your `.zshrc` and will install antigen
+if it's missing, load antigen, install the zsh-utils repo, and load any
+specified plugins.
 
 ```
 [[ ! -d "$HOME/.antigen" ]] && git clone https://github.com/zsh-users/antigen.git "$HOME/.antigen"
@@ -44,18 +51,25 @@ source "$HOME/.antigen/antigen.zsh"
 # Set the default plugin repo to be zsh-utils
 antigen use belak/zsh-utils
 
-# Specify any plugins we want
+# Specify completions we want before the completion module
+antigen bundle zsh-users/zsh-completions
+
+# Specify plugins we want
 antigen bundle editor
 antigen bundle history
 antigen bundle prompt
 antigen bundle utility
 antigen bundle completion
 
+# Specify external plugins we want
+antigen bundle zsh-users/zsh-syntax-highlighting
+
 # Load everything
 antigen apply
 
 # Set any settings or overrides here
 prompt belak
+bindkey -e
 ```
 
 ## Provided Plugins
