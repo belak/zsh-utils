@@ -67,6 +67,12 @@ support, the excelent
 [zsh-completions](https://github.com/zsh-users/zsh-completions) repo is strongly
 recommended. Note that it should be loaded *before* the completion module.
 
+### editor
+
+Override and fill in the gaps of the default emacs and vi-mode keybinds. Note
+that this resets to the default keymap. To switch to emacs or vi-mode, call
+`bindkey -e` or `bindkey -v` after loading.
+
 ### history
 
 Load and initilize the built-in zsh history system.
