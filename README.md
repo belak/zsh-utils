@@ -78,7 +78,7 @@ bindkey -e
 
 Load and initialize the built-in zsh completion system. Note that this does not
 include any additional completions. If you're looking for improved completion
-support, the excelent
+support, the excellent
 [zsh-completions](https://github.com/zsh-users/zsh-completions) repo is strongly
 recommended. Note that it should be loaded *before* the completion module.
 
