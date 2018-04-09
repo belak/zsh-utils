@@ -61,6 +61,33 @@ key_info=(
 # Functions
 #
 
+function is-term-family {
+  if [[ $TERM = $1 || $TERM = $1-* ]]; then
+    return 0
+  fi
+
+  return 1
+}
+
+function update-cursor-style {
+  # We currently only support the xterm family of terminals
+  if ! is-term-family xterm; then
+    return
+  fi
+
+  if bindkey -lL main | grep viins > /dev/null; then
+    # For vi-mode we
+    case $KEYMAP in
+      vicmd)      printf '\e[2 q';;
+      viins|main) printf '\e[6 q';;
+    esac
+  else
+    # If we're in emacs mode, we always want the block cursor
+    printf '\e[2 q'
+  fi
+}
+zle -N update-cursor-style
+
 # Enables terminal application mode
 function zle-line-init {
   # The terminal must be in application mode when ZLE is active for $terminfo
@@ -69,6 +96,11 @@ function zle-line-init {
     # Enable terminal application mode.
     echoti smkx
   fi
+
+  # Ensure we have the correct cursor. We could probably do this less
+  # frequently, but this does what we need and shouldn't incur that much
+  # overhead.
+  zle update-cursor-style
 }
 zle -N zle-line-init
 
@@ -82,6 +114,15 @@ function zle-line-finish {
   fi
 }
 zle -N zle-line-finish
+
+# Resets the prompt when the keymap changes
+function zle-keymap-select {
+  zle update-cursor-style
+
+  zle reset-prompt
+  zle -R
+}
+zle -N zle-keymap-select
 
 #
 # Init
@@ -105,6 +146,7 @@ global_keybinds=(
 local -A viins_keybinds
 viins_keybinds=(
   "$key_info[Backspace]" backward-delete-char
+  "$key_info[Control]W"  backward-kill-word
 )
 
 # vi command mode keybinds
