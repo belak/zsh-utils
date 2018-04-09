@@ -71,7 +71,7 @@ function is-term-family {
 
 function update-cursor-style {
   # We currently only support the xterm family of terminals
-  if ! is-term-family xterm; then
+  if ! is-term-family xterm && ! is-term-family rxvt; then
     return
   fi
 
