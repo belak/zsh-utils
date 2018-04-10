@@ -138,8 +138,9 @@ bindkey -d
 # Global keybinds
 local -A global_keybinds
 global_keybinds=(
-  "$key_info[Home]" beginning-of-line
-  "$key_info[End]"  end-of-line
+  "$key_info[Home]"   beginning-of-line
+  "$key_info[End]"    end-of-line
+  "$key_info[Delete]" delete-char
 )
 
 # emacs and vi insert mode keybinds
