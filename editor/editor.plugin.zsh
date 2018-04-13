@@ -69,9 +69,21 @@ function is-term-family {
   return 1
 }
 
+function is-tmux {
+  if is-term-family tmux; then
+    return 0
+  fi
+
+  if [[ -n "$TMUX" ]]; then
+    return 0
+  fi
+
+  return 1
+}
+
 function update-cursor-style {
   # We currently only support the xterm family of terminals
-  if ! is-term-family xterm && ! is-term-family rxvt; then
+  if ! is-term-family xterm && ! is-term-family rxvt && ! is-tmux; then
     return
   fi
 
