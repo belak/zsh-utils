@@ -156,6 +156,19 @@ vicmd_keybinds=(
   "$key_info[Delete]" delete-char
 )
 
+# Special case for ControlLeft and ControlRight because they have multiple
+# possible binds.
+for key in "${(s: :)key_info[ControlLeft]}"; do
+  bindkey -M emacs "$key" emacs-backward-word
+  bindkey -M viins "$key" vi-backward-word
+  bindkey -M vicmd "$key" vi-backward-word
+done
+for key in "${(s: :)key_info[ControlRight]}"; do
+  bindkey -M emacs "$key" emacs-forward-word
+  bindkey -M viins "$key" vi-forward-word
+  bindkey -M vicmd "$key" vi-forward-word
+done
+
 # Bind all global and viins keys to the emacs keymap
 for key bind in ${(kv)global_keybinds} ${(kv)viins_keybinds}; do
   bindkey -M emacs "$key" "$bind"
