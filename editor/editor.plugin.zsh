@@ -170,12 +170,12 @@ vicmd_keybinds=(
 
 # Special case for ControlLeft and ControlRight because they have multiple
 # possible binds.
-for key in "${(s: :)key_info[ControlLeft]}"; do
+for key in "${(s: :)key_info[ControlLeft]}" "${key_info[Escape]}${key_info[Left]}"; do
   bindkey -M emacs "$key" emacs-backward-word
   bindkey -M viins "$key" vi-backward-word
   bindkey -M vicmd "$key" vi-backward-word
 done
-for key in "${(s: :)key_info[ControlRight]}"; do
+for key in "${(s: :)key_info[ControlRight]}" "${key_info[Escape]}${key_info[Right]}"; do
   bindkey -M emacs "$key" emacs-forward-word
   bindkey -M viins "$key" vi-forward-word
   bindkey -M vicmd "$key" vi-forward-word
