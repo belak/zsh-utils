@@ -30,9 +30,8 @@ there are a number of additional things to keep in mind.
 ## Plugins
 
 - Large functions must be placed in a *functions* directory
-- All plugins and features must be documented in the README (this means they
+- All plugins and features must be documented in PLUGINS.md (this means they
   need to be simple enough to explain in a sentence or two)
-
 - Plugins must be in the oh-my-zsh format
   (`{plugin-name}/{plugin-name}.plugin.zsh`) this is for compatibility and not
   for convenience.
