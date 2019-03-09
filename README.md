@@ -2,11 +2,14 @@
 
 A minimal set of ZSH plugins designed to be low-friction and low-complexity.
 
-## Features
+This includes a number of simple plugins designed to smooth away some of the
+rough edges of zsh without getting in your way. The idea is that you should be
+able to say "I'd like to enable the history features of ZSH" (or other similar
+features) without needing to know the gritty details.
 
-Simple plugins designed to smooth away some of the rough edges of zsh without
-getting in your way. All the plugins are designed to work with no
-configuration and no additional dependencies.
+All the plugins are designed to work with no configuration and no additional
+dependencies, but shouldn't conflict with additional configuration you want to
+do.
 
 ## Recommended Installation
 
@@ -98,7 +101,7 @@ but this is much more convenient and lets us line up with insert mode.
 
 #### Vi Insert Mode
 
-- Backspace and Control-W both act closer to their Vi counterparts.
+- Backspace and Control-W both act closer to their Vi counterparts
 
 ### history
 
@@ -120,15 +123,16 @@ experience better.
 
 Load and initialize the build-in zsh prompt system. This also provides a
 number of additional prompts. Note that in order to actually set your prompt,
-you must call `prompt <prompt name>`
+you must call `prompt <prompt name>`.
 
 #### Included Prompts
 
 Note that each maintainer is allowed to have one prompt theme, matching their
-github username. This is to improve maintainability and
+github username. This is to improve maintainability by avoiding including any
+themes which don't have someone willing to maintain them.
 
 - `belak` - simple prompt originally based on the gentoo prompt with some
-  additional information.
+  additional information
 
 #### Tweaks
 
