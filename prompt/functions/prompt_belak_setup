@@ -52,8 +52,9 @@ function prompt_belak_gitstatus {
   # something should be done with the repo. They're in order from most
   # important to least important.
   local indicators
-  (( $VCS_STATUS_HAS_CONFLICTED )) && indicators+="%B%F{red}*%f%b"
-  (( $VCS_STATUS_HAS_UNSTAGED || $VCS_STATUS_HAS_UNTRACKED )) && indicators+="%B%F{yellow}*%f%b"
+  (( $VCS_STATUS_HAS_CONFLICTED )) && indicators+="%B%F{magenta}*%f%b"
+  (( $VCS_STATUS_HAS_UNTRACKED )) && indicators+="%B%F{red}*%f%b"
+  (( $VCS_STATUS_HAS_UNSTAGED )) && indicators+="%B%F{yellow}*%f%b"
   (( $VCS_STATUS_HAS_STAGED )) && indicators+="%B%F{green}*%f%b"
   p+="$indicators "
 
