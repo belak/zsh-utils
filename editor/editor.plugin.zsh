@@ -27,7 +27,7 @@ typeset -gA key_info
 
 # Modifiers
 key_info=(
-  'Control'         '\C-'
+  'Control'      '\C-'
   'Escape'       '\e'
   'Meta'         '\M-'
 )
@@ -62,8 +62,8 @@ key_info+=(
 
 # Mod plus another key
 key_info+=(
-  'AltLeft'         "${key_info[Escape]}${key_info[Left]}"
-  'AltRight'        "${key_info[Escape]}${key_info[Right]}"
+  'AltLeft'         "${key_info[Escape]}${key_info[Left]} \e[1;3D"
+  'AltRight'        "${key_info[Escape]}${key_info[Right]} \e[1;3C"
   'ControlLeft'     '\e[1;5D \e[5D \e\e[D \eOd'
   'ControlRight'    '\e[1;5C \e[5C \e\e[C \eOc'
   'ControlPageUp'   '\e[5;5~'
@@ -183,12 +183,12 @@ vicmd_keybinds=(
 
 # Special case for ControlLeft and ControlRight because they have multiple
 # possible binds.
-for key in "${(s: :)key_info[ControlLeft]}" "${key_info[AltLeft]}"; do
+for key in "${(s: :)key_info[ControlLeft]}" "${(s: :)key_info[AltLeft]}"; do
   bindkey -M emacs "$key" emacs-backward-word
   bindkey -M viins "$key" vi-backward-word
   bindkey -M vicmd "$key" vi-backward-word
 done
-for key in "${(s: :)key_info[ControlRight]}" "${key_info[AltRight]}"; do
+for key in "${(s: :)key_info[ControlRight]}" "${(s: :)key_info[AltRight]}"; do
   bindkey -M emacs "$key" emacs-forward-word
   bindkey -M viins "$key" vi-forward-word
   bindkey -M vicmd "$key" vi-forward-word
