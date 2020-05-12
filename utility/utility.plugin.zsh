@@ -39,15 +39,19 @@ elif [[ "$OSTYPE" == cygwin* ]]; then
 else
   alias o='xdg-open'
 
-  if (( $+commands[wl-copy] && $+commands[wl-paste] )); then
-    alias pbcopy='wl-copy'
-    alias pbpaste='wl-paste'
-  elif (( $+commands[xclip] )); then
-    alias pbcopy='xclip -selection clipboard -in'
-    alias pbpaste='xclip -selection clipboard -out'
-  elif (( $+commands[xsel] )); then
-    alias pbcopy='xsel --clipboard --input'
-    alias pbpaste='xsel --clipboard --output'
+  if [[ -n $DISPLAY ]]; then
+    if (( $+commands[xclip] )); then
+      alias pbcopy='xclip -selection clipboard -in'
+      alias pbpaste='xclip -selection clipboard -out'
+    elif (( $+commands[xsel] )); then
+      alias pbcopy='xsel --clipboard --input'
+      alias pbpaste='xsel --clipboard --output'
+    fi
+  else
+    if (( $+commands[wl-copy] && $+commands[wl-paste] )); then
+      alias pbcopy='wl-copy'
+      alias pbpaste='wl-paste'
+    fi
   fi
 fi
 
