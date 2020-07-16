@@ -36,6 +36,10 @@ elif [[ "$OSTYPE" == cygwin* ]]; then
   alias o='cygstart'
   alias pbcopy='tee > /dev/clipboard'
   alias pbpaste='cat /dev/clipboard'
+elif [[ "$OSTYPE" == linux-android ]]; then
+  alias o='termux-open'
+  alias pbcopy='termux-clipboard-set'
+  alias pbpaste='termux-clipboard-get'
 else
   alias o='xdg-open'
 
