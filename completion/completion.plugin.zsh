@@ -6,11 +6,13 @@ if [[ "$TERM" == 'dumb' ]]; then
   return 1
 fi
 
-# Check whether to use XDG basedir locations or $ZDOTDIR.
-if zstyle -t ':zsh-utils:plugins:completion' use-xdg-basedirs; then
-  [[ -d ${XDG_CACHE_HOME:-$HOME/.cache}/zsh ]] || mkdir -p ${XDG_CACHE_HOME:-$HOME/.cache}/zsh
-  _zcompdump="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcompdump"
-  _zcompcache="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcompcache"
+if zstyle -T ':zsh-utils:plugins:completion' use-xdg-basedirs; then
+  # Ensure the cache directory exists
+  _cache_dir=${XDG_CACHE_HOME:-$HOME/.cache}/zsh
+  [[ -d "$_cache_dir" ]] || mkdir -p "$_cache_dir"
+
+  _zcompdump="$_cache_dir/zsh/compdump"
+  _zcompcache="$_cache_dir/zsh/compcache"
 else
   _zcompdump="${ZDOTDIR:-$HOME}/.zcompdump"
   _zcompcache="${ZDOTDIR:-$HOME}/.zcompcache"
@@ -51,4 +53,9 @@ if (( $#_comp_files )); then
 else
   compinit -i -d "$_zcompdump"
 fi
-unset _comp_files _zcompdump _zcompcache
+
+#
+# Cleanup
+#
+
+unset _cache_dir _comp_files _zcompdump _zcompcache

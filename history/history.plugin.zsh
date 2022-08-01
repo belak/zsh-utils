@@ -1,4 +1,18 @@
 #
+# Requirements
+#
+
+if zstyle -T ':zsh-utils:plugins:history' use-xdg-basedirs; then
+  # Ensure the data directory exists
+  _data_dir=${XDG_DATA_HOME:-$HOME/.local/share}/zsh
+  [[ -d "$_data_dir"  ]] || mkdir -p "$_data_dir"
+
+  _zhistfile=$_data_dir/${ZHISTFILE:-history}
+else
+  _zhistfile=${ZDOTDIR:-$HOME}/${ZHISTFILE:-.zsh_history}
+fi
+
+#
 # Options
 #
 
@@ -18,13 +32,7 @@ setopt HIST_BEEP              # Beep when accessing non-existent history.
 # Variables
 #
 
-# Set the path to the history file.
-if zstyle -t ':zsh-utils:plugins:history' use-xdg-basedirs; then
-  HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/zsh/${ZHISTFILE:-history}"
-  [[ -d "${HISTFILE:h}" ]] || mkdir -p "${HISTFILE:h}"
-else
-  HISTFILE="${ZDOTDIR:-$HOME}/${ZHISTFILE:-.zsh_history}"
-fi
+HISTFILE="$_zhistfile"
 HISTSIZE=10000  # The maximum number of events to save in the internal history.
 SAVEHIST=10000  # The maximum number of events to save in the history file.
 
@@ -34,3 +42,9 @@ SAVEHIST=10000  # The maximum number of events to save in the history file.
 
 # Lists the ten most used commands.
 alias history-stat="history 0 | awk '{print \$2}' | sort | uniq -c | sort -n -r | head"
+
+#
+# Cleanup
+#
+
+unset _data_dir _zhistfile
