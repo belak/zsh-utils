@@ -1,6 +1,7 @@
 # zsh-utils
 
-A minimal set of ZSH plugins designed to be low-friction and low-complexity.
+A minimal, opinionated set of ZSH plugins designed to be low-friction and
+low-complexity.
 
 This includes a number of simple plugins designed to smooth away some of the
 rough edges of zsh without getting in your way. The idea is that you should be
@@ -13,10 +14,8 @@ do.
 
 ## Recommended Installation
 
-Officially [antigen](https://github.com/zsh-users/antigen.git) is
-recommended, but it should be possible to load with other plugin managers like
-[zgen](https://github.com/tarjoilija/zgen) or
-[zplug](https://github.com/zplug/zplug) as well.
+Officially [antigen][antigen] is recommended, but it should be possible to load
+with other plugin managers like [zgen][zgen] or [zplug][zplug] as well.
 
 The following example can be placed in your `.zshrc`. It will install antigen
 if it's missing, load antigen, install the zsh-utils repo, and load any
@@ -52,35 +51,17 @@ bindkey -e
 
 ## Provided Plugins
 
-- completion - Load and initialize the built-in zsh completion system
-- editor - Override and fill in the gaps of the default keybinds
-- history - Load and initilize the built-in zsh history system
-- prompt - Load and initialize the build-in zsh prompt system
-- utility - Common shell utilities, aimed at making cross platform work less painful
-
-## Configuration
-
-[XDG base directory locations][xdg-basedirs] can be used for `$HISTFILE` in
-the history plugin, and `zcompdump` and `zcompcache` in the completions
-plugin. This is helpful if you want to move these files out of your `$HOME`
-or `$ZDOTDIR` directories.
-
-To use XDG base directory locations, set the following zstyle:
-
-```zsh
-zstyle ':zsh-utils:*:*' use-xdg-basedirs 'yes'
-```
-
-Or, you can set it individually for each plugin:
-
-```zsh
-zstyle ':zsh-utils:plugins:history' use-xdg-basedirs 'no'
-zstyle ':zsh-utils:plugins:completion' use-xdg-basedirs 'yes'
-```
+- `completion` - Load and initialize the built-in zsh completion system
+- `editor` - Override and fill in the gaps of the default keybinds
+- `history` - Load and initilize the built-in zsh history system
+- `prompt` - Load and initialize the build-in zsh prompt system
+- `utility` - Common shell utilities, aimed at making cross platform work less painful
 
 ## Plugin Details
 
 For more specific information about the plugins, check out [PLUGINS.md](./PLUGINS.md).
 
-
+[antigen]: https://github.com/zsh-users/antigen.git
 [xdg-basedirs]: https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
+[zgen]: https://github.com/tarjoilija/zgen
+[zplug]: https://github.com/zplug/zplug
