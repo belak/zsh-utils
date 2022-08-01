@@ -18,9 +18,15 @@ setopt HIST_BEEP              # Beep when accessing non-existent history.
 # Variables
 #
 
-HISTFILE="${ZDOTDIR:-$HOME}/${ZHISTFILE:-.zsh_history}" # The path to the history file.
-HISTSIZE=10000                                          # The maximum number of events to save in the internal history.
-SAVEHIST=10000                                          # The maximum number of events to save in the history file.
+# Set the path to the history file.
+if zstyle -t ':zsh-utils:plugins:history' use-xdg-basedirs; then
+  HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/zsh/${ZHISTFILE:-history}"
+  [[ -d "${HISTFILE:h}" ]] || mkdir -p "${HISTFILE:h}"
+else
+  HISTFILE="${ZDOTDIR:-$HOME}/${ZHISTFILE:-.zsh_history}"
+fi
+HISTSIZE=10000  # The maximum number of events to save in the internal history.
+SAVEHIST=10000  # The maximum number of events to save in the history file.
 
 #
 # Aliases

@@ -58,6 +58,29 @@ bindkey -e
 - prompt - Load and initialize the build-in zsh prompt system
 - utility - Common shell utilities, aimed at making cross platform work less painful
 
+## Configuration
+
+[XDG base directory locations][xdg-basedirs] can be used for `$HISTFILE` in
+the history plugin, and `zcompdump` and `zcompcache` in the completions
+plugin. This is helpful if you want to move these files out of your `$HOME`
+or `$ZDOTDIR` directories.
+
+To use XDG base directory locations, set the following zstyle:
+
+```zsh
+zstyle ':zsh-utils:*:*' use-xdg-basedirs 'yes'
+```
+
+Or, you can set it individually for each plugin:
+
+```zsh
+zstyle ':zsh-utils:plugins:history' use-xdg-basedirs 'no'
+zstyle ':zsh-utils:plugins:completion' use-xdg-basedirs 'yes'
+```
+
 ## Plugin Details
 
 For more specific information about the plugins, check out [PLUGINS.md](./PLUGINS.md).
+
+
+[xdg-basedirs]: https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
