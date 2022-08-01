@@ -124,4 +124,7 @@ Utils which have support color available have aliases added to automatically
 use colors when available. Additionally, directories are grouped first in `ls`
 output.
 
+The default ZSH alias of `run-help` to `man` is overwritten with the `run-help`
+autoload because it's more featureful without losing functionality.
+
 [zsh-completions]: https://github.com/zsh-users/zsh-completions
