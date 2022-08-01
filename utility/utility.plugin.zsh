@@ -1,4 +1,13 @@
 #
+# Requirements
+#
+
+setopt EXTENDED_GLOB # Needed for file modification glob modifiers with coreutils setup
+
+_cache_dir=${XDG_CACHE_HOME:-$HOME/.cache}/zsh-utils
+[[ -d "$_cache_dir" ]] || mkdir -p "$_cache_dir"
+
+#
 # Aliases
 #
 
@@ -13,10 +22,9 @@ function -coreutils-alias-setup {
 
   # Cache results of running dircolors for 20 hours, so it should almost
   # always regenerate the first time a shell is opened each day.
-  local dircolors_cache=${XDG_CACHE_HOME:-$HOME/.cache}/zsh-utils/${prefix}dircolors.zsh
+  local dircolors_cache=$_cache_dir/${prefix}dircolors.zsh
   local cache_files=($dircolors_cache(Nmh-20))
   if ! (( $#cache_files )); then
-    mkdir -p "${dircolors_cache:h}"
     ${prefix}dircolors --sh >| $dircolors_cache
   fi
   source "${dircolors_cache}"
@@ -79,3 +87,4 @@ alias help=run-help
 #
 
 unfunction -- -coreutils-alias-setup
+unset _cache_dir
