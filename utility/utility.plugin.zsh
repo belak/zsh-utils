@@ -11,7 +11,15 @@ function -coreutils-alias-setup {
   # installed alongside BSD Coreutils
   local prefix=$1
 
-  eval "$(${prefix}dircolors --sh)"
+  # Cache results of running dircolors for 20 hours, so it should almost
+  # always regenerate the first time a shell is opened each day.
+  local dircolors_cache=${XDG_CACHE_HOME:-$HOME/.cache}/zsh-utils/${prefix}dircolors.zsh
+  local cache_files=($dircolors_cache(Nmh-20))
+  if ! (( $#cache_files )); then
+    mkdir -p "${dircolors_cache:h}"
+    ${prefix}dircolors --sh >| $dircolors_cache
+  fi
+  source "${dircolors_cache}"
 
   alias ${prefix}ls="${aliases[${prefix}ls]:-${prefix}ls} --group-directories-first --color=auto"
 }
