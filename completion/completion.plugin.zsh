@@ -6,8 +6,12 @@ if [[ "$TERM" == 'dumb' ]]; then
   return 1
 fi
 
+#
+# Config
+#
+
 if zstyle -T ':zsh-utils:plugins:completion' use-xdg-basedirs; then
-  # Ensure the cache directory exists
+  # Ensure the cache directory exists.
   _cache_dir=${XDG_CACHE_HOME:-$HOME/.cache}/zsh
   [[ -d "$_cache_dir" ]] || mkdir -p "$_cache_dir"
 
@@ -42,6 +46,12 @@ zstyle ':completion::complete:*' cache-path "$_zcompcache"
 #
 # Init
 #
+
+# Initialize completion styles. Users can set their preferred completion style by
+# calling `compstyle <compstyle>` in their .zshrc, or by defining their own
+# `compstyle_<name>_setup` functions similar to the zsh prompt system.
+fpath+="${0:A:h}/functions"
+autoload -Uz compstyleinit && compstyleinit
 
 # Load and initialize the completion system ignoring insecure directories with a
 # cache time of 20 hours, so it should almost always regenerate the first time a
