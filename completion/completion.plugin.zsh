@@ -6,10 +6,6 @@ if [[ "$TERM" == 'dumb' ]]; then
   return 1
 fi
 
-#
-# Config
-#
-
 if zstyle -T ':zsh-utils:plugins:completion' use-xdg-basedirs; then
   # Ensure the cache directory exists.
   _cache_dir=${XDG_CACHE_HOME:-$HOME/.cache}/zsh
