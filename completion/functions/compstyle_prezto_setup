@@ -4,20 +4,20 @@
 ## Home:     https://github.com/sorin-ionescu/prezto
 ## Authors:  Prezto contributers (https://github.com/sorin-ionescu/prezto/graphs/contributors)
 ## License:  MIT
-## Source:   https://github.com/sorin-ionescu/prezto/blob/master/modules/completion/init.zsh
+## Source:   https://github.com/sorin-ionescu/prezto/blob/51c4ff6de4e2d1afd30e52ba19b21b1128fd1ed5/modules/completion/init.zsh
 
-function compstyle_prez_help () {
+function compstyle_prezto_help () {
   cat <<'EOF'
 This completion style mimics the one included with Prezto.
 You can invoke it with the following command:
 
-  compstyle prez
+  compstyle prezto
 
 More information available here: https://github.com/sorin-ionescu/prezto
 EOF
 }
 
-function compstyle_prez_setup {
+function compstyle_prezto_setup {
   # Standard style used by default for 'list-colors'
   LS_COLORS=${LS_COLORS:-'di=34:ln=35:so=32:pi=33:ex=31:bd=36;01:cd=33;01:su=31;40;07:sg=36;40;07:tw=32;40;07:ow=33;40;07:'}
 
@@ -136,4 +136,4 @@ function compstyle_prez_setup {
   zstyle ':completion:*:(ssh|scp|rsync):*:hosts-ipaddr' ignored-patterns '^(<->.<->.<->.<->|(|::)([[:xdigit:].]##:(#c,2))##(|%*))' '127.0.0.<->' '255.255.255.255' '::1' 'fe80::*'
 }
 
-compstyle_prez_setup "$@"
+compstyle_prezto_setup "$@"

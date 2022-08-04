@@ -1,17 +1,17 @@
 #!/bin/zsh
 
-function compstyle_zsh-utils_help () {
+function compstyle_zshzoo_help () {
   cat <<'EOF'
-This completion style is from the zsh-utils project.
+A composite of the grml, prezto, and ohmyzsh completions.
 You can invoke it with the following command:
 
-  compstyle zsh-utils
+  compstyle zshzoo
 
-More information available here: https://github.com/belak/zsh-utils
+More information available here: https://github.com/zshzoo
 EOF
 }
 
-function compstyle_zsh-utils_setup {
+function compstyle_zshzoo_setup {
   # Defaults.
   zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
   zstyle ':completion:*:default' list-prompt '%S%M matches%s'
@@ -86,4 +86,4 @@ function compstyle_zsh-utils_setup {
   zstyle ':completion:*:man:*'      menu yes select
 }
 
-compstyle_zsh-utils_setup "$@"
+compstyle_zshzoo_setup "$@"
