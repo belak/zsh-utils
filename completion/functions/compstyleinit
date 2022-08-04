@@ -1,16 +1,9 @@
-#!/bin/zsh
-
-##? Usage: compstyle [-l] [-h [<style>]]
-##?        compstyle <style>
-##? Options:
-##?   -l            List currently available completion styles
-##?   -h [<style>]  Display help (for given compstyle)
-##? Arguments:
-##?   <style>       Switch to new compstyle
-##?
-##? Use `compstyle -h' for help.
-##? Load with `autoload -Uz compstyleinit; compstyleinit'.
-##? Set completion style with `compstyle <compstyle>'.
+#
+# zsh completions styles extension
+#
+# Load with `autoload -Uz compstyleinit; compstyleinit'.
+# Type `compstyle -h' for help.
+#
 
 typeset -gaU completion_styles
 typeset -ga completion_style
@@ -41,6 +34,17 @@ function compstyleinit {
 function _compstyle_usage {
   emulate -L zsh; setopt extended_glob
   0=${(%):-%x}
+  local usage='Usage: compstyle [-l] [-h [<style>]]
+       compstyle <style>
+Options:
+  -l            List currently available completion styles
+  -h [<style>]  Display help (for given compstyle)
+Arguments:
+  <style>       Switch to new compstyle
+
+Use `compstyle -h` for help.
+Load with `autoload -Uz compstyleinit; compstyleinit`.
+Set completion style with `compstyle <compstyle>`.'
 
   if [[ -n "$1" && -n "$completion_styles[(r)$1]" ]]; then
     # Run this in a subshell, so we don't need to clean up afterwards.
@@ -59,7 +63,7 @@ function _compstyle_usage {
     )
   else
     # read '##?' doc comments from this file to display usage
-    command grep "^##?" "${0:A}" | cut -c 5-
+    print $usage
   fi
 }
 
