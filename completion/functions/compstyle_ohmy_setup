@@ -4,7 +4,7 @@
 ## Home:     https://ohmyz.sh
 ## Authors:  Oh-My-Zsh contributers (https://github.com/ohmyzsh/ohmyzsh/graphs/contributors)
 ## License:  MIT
-## Source:   https://github.com/ohmyzsh/ohmyzsh/blob/master/lib/completion.zsh
+## Source:   https://github.com/ohmyzsh/ohmyzsh/blob/97134d1eed19b72a9c4bf90a2effa847221608bf/lib/completion.zsh
 
 function compstyle_ohmy_help () {
   cat <<'EOF'
