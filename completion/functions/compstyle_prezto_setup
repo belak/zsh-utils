@@ -6,7 +6,7 @@
 ## License:  MIT
 ## Source:   https://github.com/sorin-ionescu/prezto/blob/51c4ff6de4e2d1afd30e52ba19b21b1128fd1ed5/modules/completion/init.zsh
 
-function compstyle_prezto_help () {
+function compstyle_prezto_help {
   cat <<'EOF'
 This completion style mimics the one included with Prezto.
 You can invoke it with the following command:

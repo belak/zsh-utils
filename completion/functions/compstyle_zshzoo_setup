@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-function compstyle_zshzoo_help () {
+function compstyle_zshzoo_help {
   cat <<'EOF'
 A composite of the grml, prezto, and ohmyzsh completions.
 You can invoke it with the following command:

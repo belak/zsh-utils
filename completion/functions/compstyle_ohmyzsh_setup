@@ -6,7 +6,7 @@
 ## License:  MIT
 ## Source:   https://github.com/ohmyzsh/ohmyzsh/blob/97134d1eed19b72a9c4bf90a2effa847221608bf/lib/completion.zsh
 
-function compstyle_ohmyzsh_help () {
+function compstyle_ohmyzsh_help {
   cat <<'EOF'
 This completion style mimics the one included with Oh-My-Zsh.
 You can invoke it with the following command:
