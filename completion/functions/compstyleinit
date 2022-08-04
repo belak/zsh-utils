@@ -84,24 +84,10 @@ function compstyle {
     return 1
   fi
 
-  # cleanup any prior completion styles
-  if (( $+functions[compstyle_$1_cleanup] )); then
-    compstyle_$1_cleanup
-  else
-    compstyle_cleanup
-  fi
+  # TODO: cleanup any prior completion styles
 
   # set the new completion styles
   compstyle_$1_setup "$@[2,-1]" && completion_style=( "$@" )
-}
-
-function compstyle_cleanup {
-  # remove all zstyles matching ':completion:*'
-  local style comp_styles
-  local comp_styles=($(zstyle -L ':completion:*' | grep -o "\':completion:[^']*\'" | sort | uniq))
-  for style in $comp_styles; do
-    zstyle -d $style &> /dev/null
-  done
 }
 
 compstyleinit "$@"
