@@ -25,10 +25,6 @@ function compstyle_prez_setup {
   zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
   zstyle ':completion:*:default' list-prompt '%S%M matches%s'
 
-  # Use caching to make completion for commands such as dpkg and apt usable.
-  zstyle ':completion::complete:*' use-cache on
-  zstyle ':completion::complete:*' cache-path "${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcompcache"
-
   # Case-insensitive (all), partial-word, and then substring completion.
   if zstyle -t ':zsh-utils:plugin:completion:*' case-sensitive; then
     zstyle ':completion:*' matcher-list 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
