@@ -11,8 +11,8 @@ if zstyle -T ':zsh-utils:plugins:completion' use-xdg-basedirs; then
   _cache_dir=${XDG_CACHE_HOME:-$HOME/.cache}/zsh
   [[ -d "$_cache_dir" ]] || mkdir -p "$_cache_dir"
 
-  _zcompdump="$_cache_dir/zsh/compdump"
-  _zcompcache="$_cache_dir/zsh/compcache"
+  _zcompdump="$_cache_dir/compdump"
+  _zcompcache="$_cache_dir/compcache"
 else
   _zcompdump="${ZDOTDIR:-$HOME}/.zcompdump"
   _zcompcache="${ZDOTDIR:-$HOME}/.zcompcache"
