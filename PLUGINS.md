@@ -127,4 +127,5 @@ output.
 The default ZSH alias of `run-help` to `man` is overwritten with the `run-help`
 autoload because it's more featureful without losing functionality.
 
+[xdg-basedirs]: https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
 [zsh-completions]: https://github.com/zsh-users/zsh-completions
