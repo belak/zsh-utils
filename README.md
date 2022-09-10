@@ -1,16 +1,33 @@
 # zsh-utils
 
-A minimal, opinionated set of ZSH plugins designed to be low-friction and
-low-complexity.
+A minimal, opinionated set of ZSH plugins designed to be small, simple, and
+focused.
 
 This includes a number of simple plugins designed to smooth away some of the
 rough edges of zsh without getting in your way. The idea is that you should be
 able to say "I'd like to enable the history features of ZSH" (or other similar
-features) without needing to know the gritty details.
+features) without needing to know the gritty details and without worrying that
+a bunch of unrelated settings will be enabled.
 
 All the plugins are designed to work with no configuration and no additional
 dependencies, but shouldn't conflict with additional configuration you want to
 do.
+
+## Driving Principles
+
+Many other zsh config frameworks and modules do too much, are overly complex,
+don't work well out of the box, and have many unmaintained modules. zsh-utils
+aims to be small, simple, and focused.
+
+- Don't reinvent the wheel. If there's an existing plugin elsewhere which works
+  well it should be preferred (such as [zsh-completions](https://github.com/zsh-users/zsh-completions)
+  and [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting).
+- Clear is better than clever. The code should be easy to maintain for anyone
+  with a decent knowledge of zsh. Comments should be included when anything needs
+  explanation.
+- Avoid configuration when possible. Most modules should be self-contained and
+  work out of the box without any necessary configuration. These plugins make a
+  number of opinionated decisions, so some settings may be provided to disable those.
 
 ## Recommended Installation
 
