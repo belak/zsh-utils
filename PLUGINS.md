@@ -69,6 +69,18 @@ but this is much more convenient and lets us line up with insert mode.
 
 - Backspace and Control-W both act closer to their Vi counterparts
 
+### environment
+
+Configure a better zsh environment than the defaults by setting helpful built-in
+[options][zsh-options].
+
+#### Tweaks
+
+- Sets general options
+- Sets directory options
+- Sets I/O options
+- Sets job control options
+
 ### history
 
 Load and initilize the built-in zsh history system.
@@ -129,3 +141,4 @@ autoload because it's more featureful without losing functionality.
 
 [xdg-basedirs]: https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
 [zsh-completions]: https://github.com/zsh-users/zsh-completions
+[zsh-options]: https://zsh.sourceforge.io/Doc/Release/Options.html

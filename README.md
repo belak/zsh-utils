@@ -50,6 +50,7 @@ antigen bundle zsh-users/zsh-completions
 
 # Specify plugins we want
 antigen bundle editor
+antigen bundle environment
 antigen bundle history
 antigen bundle prompt
 antigen bundle utility
@@ -70,6 +71,7 @@ bindkey -e
 
 - `completion` - Load and initialize the built-in zsh completion system
 - `editor` - Override and fill in the gaps of the default keybinds
+- `environment` - Setup the zsh environment by enabling helpful options
 - `history` - Load and initilize the built-in zsh history system
 - `prompt` - Load and initialize the build-in zsh prompt system
 - `utility` - Common shell utilities, aimed at making cross platform work less painful
