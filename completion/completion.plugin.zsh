@@ -58,6 +58,8 @@ if (( $#_comp_files )); then
   compinit -i -C -d "$_zcompdump"
 else
   compinit -i -d "$_zcompdump"
+  # Keep $_zcompdump younger than cache time even if it isn't regenerated.
+  touch "$_zcompdump"
 fi
 
 #
