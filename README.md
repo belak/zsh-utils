@@ -43,17 +43,17 @@ specified plugins.
 source "$HOME/.antigen/antigen.zsh"
 
 # Set the default plugin repo to be zsh-utils
-antigen use belak/zsh-utils
+antigen use belak/zsh-utils --branch=main
 
 # Specify completions we want before the completion module
 antigen bundle zsh-users/zsh-completions
 
 # Specify plugins we want
-antigen bundle editor
-antigen bundle history
-antigen bundle prompt
-antigen bundle utility
-antigen bundle completion
+antigen bundle editor@main
+antigen bundle history@main
+antigen bundle prompt@main
+antigen bundle utility@main
+antigen bundle completion@main
 
 # Specify additional external plugins we want
 antigen bundle zsh-users/zsh-syntax-highlighting
