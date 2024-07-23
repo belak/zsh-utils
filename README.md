@@ -71,7 +71,7 @@ bindkey -e
 - `completion` - Load and initialize the built-in zsh completion system
 - `editor` - Override and fill in the gaps of the default keybinds
 - `history` - Load and initilize the built-in zsh history system
-- `prompt` - Load and initialize the build-in zsh prompt system
+- `prompt` - Load and initialize the built-in zsh prompt system
 - `utility` - Common shell utilities, aimed at making cross platform work less painful
 
 ## Plugin Details
