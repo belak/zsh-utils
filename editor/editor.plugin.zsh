@@ -94,60 +94,62 @@ function is-tmux {
   return 1
 }
 
-function update-cursor-style {
-  # We currently only support the xterm family of terminals
-  if ! is-term-family xterm && ! is-term-family rxvt && ! is-tmux; then
-    return
-  fi
+if zstyle -T ':zsh-utils:plugins:editor' set-cursor-style; then
+  function update-cursor-style {
+    # We currently only support the xterm family of terminals
+    if ! is-term-family xterm && ! is-term-family rxvt && ! is-tmux; then
+      return
+    fi
 
-  if bindkey -lL main | grep viins > /dev/null; then
-    # For vi-mode we
-    case $KEYMAP in
-      vicmd)      printf '\e[2 q';;
-      viins|main) printf '\e[6 q';;
-    esac
-  else
-    # If we're in emacs mode, we always want the block cursor
-    printf '\e[2 q'
-  fi
-}
-zle -N update-cursor-style
+    if bindkey -lL main | grep viins > /dev/null; then
+      # For vi-mode we
+      case $KEYMAP in
+        vicmd)      printf '\e[2 q';;
+        viins|main) printf '\e[6 q';;
+      esac
+    else
+      # If we're in emacs mode, we always want the block cursor
+      printf '\e[2 q'
+    fi
+  }
+  zle -N update-cursor-style
 
-# Enables terminal application mode
-function zle-line-init {
-  # The terminal must be in application mode when ZLE is active for $terminfo
-  # values to be valid.
-  if (( $+terminfo[smkx] )); then
-    # Enable terminal application mode.
-    echoti smkx
-  fi
+  # Enables terminal application mode
+  function zle-line-init {
+    # The terminal must be in application mode when ZLE is active for $terminfo
+    # values to be valid.
+    if (( $+terminfo[smkx] )); then
+      # Enable terminal application mode.
+      echoti smkx
+    fi
 
-  # Ensure we have the correct cursor. We could probably do this less
-  # frequently, but this does what we need and shouldn't incur that much
-  # overhead.
-  zle update-cursor-style
-}
-zle -N zle-line-init
+    # Ensure we have the correct cursor. We could probably do this less
+    # frequently, but this does what we need and shouldn't incur that much
+    # overhead.
+    zle update-cursor-style
+  }
+  zle -N zle-line-init
 
-# Disables terminal application mode
-function zle-line-finish {
-  # The terminal must be in application mode when ZLE is active for $terminfo
-  # values to be valid.
-  if (( $+terminfo[rmkx] )); then
-    # Disable terminal application mode.
-    echoti rmkx
-  fi
-}
-zle -N zle-line-finish
+  # Disables terminal application mode
+  function zle-line-finish {
+    # The terminal must be in application mode when ZLE is active for $terminfo
+    # values to be valid.
+    if (( $+terminfo[rmkx] )); then
+      # Disable terminal application mode.
+      echoti rmkx
+    fi
+  }
+  zle -N zle-line-finish
 
-# Resets the prompt when the keymap changes
-function zle-keymap-select {
-  zle update-cursor-style
+  # Resets the prompt when the keymap changes
+  function zle-keymap-select {
+    zle update-cursor-style
 
-  zle reset-prompt
-  zle -R
-}
-zle -N zle-keymap-select
+    zle reset-prompt
+    zle -R
+  }
+  zle -N zle-keymap-select
+fi
 
 #
 # Init
