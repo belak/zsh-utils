@@ -50,6 +50,17 @@ to the default keymap. To switch to emacs or vi-mode, call `bindkey -e` or
 The aim of this module is to smooth away some of the rough edges of the
 default key-binds, not to emulate Emacs or Vi perfectly.
 
+#### Options
+
+By default, if your terminal supports it, the cursor will change styles to
+a pipe for insert mode, and a block for normal mode.
+
+If this interacts poorly with your terminal, it can be disabled:
+
+```zsh
+zstyle ':zsh-utils:plugins:editor' set-cursor-style 'no'
+```
+
 #### All Modes
 
 - Home, End, and Delete are properly bound.
