@@ -1,5 +1,19 @@
 # zsh-utils
 
+NOTE: As of October 2025, I am no longer using or developing zsh-utils. If you
+have bug fixes or minor PRs, please feel free to submit them and I will review
+as I am able, but as I no longer use zsh-utils, support will be limited.
+
+Most of my dotfiles have been moved over to [zephyr](zephyr) which continues the
+spirit of this project but is better in almost every way. It has more complete
+defaults, more modules, more workarounds for zsh oddities, and is just better
+maintained in general. If you're looking for an alternative, I'd strongly
+recommend migrating to zephyr.
+
+Thank-you to everyone who has used zsh-utils over the years for your support!
+
+## Intro
+
 A minimal, opinionated set of ZSH plugins designed to be small, simple, and
 focused.
 
@@ -80,5 +94,6 @@ For more specific information about the plugins, check out [PLUGINS.md](./PLUGIN
 
 [antigen]: https://github.com/zsh-users/antigen.git
 [xdg-basedirs]: https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
+[zephyr]: https://github.com/mattmc3/zephyr
 [zgen]: https://github.com/tarjoilija/zgen
 [zplug]: https://github.com/zplug/zplug
